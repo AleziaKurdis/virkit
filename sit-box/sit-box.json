@@ -28,9 +28,9 @@
             "w": 1
         }
     },
-    "script": "http://metaverse.bashora.com/scripts/sit/sitClient.js",
+    "script": "https://aleziakurdis.github.io/virkit/sit-box/sit/sitClient.js",
     "scriptTimestamp": 1611459854336,
-    "serverScripts": "http://metaverse.bashora.com/scripts/sit/sitServer.js",
+    "serverScripts": "https://aleziakurdis.github.io/virkit/sit-box/sit/sitServer.js",
     "color": {
         "red": 0,
         "green": 180,
