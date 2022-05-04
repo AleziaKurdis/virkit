@@ -1,0 +1,44 @@
+{
+  "DataVersion": 0,
+  "Entities": [
+    {
+    "id": "{836cc91d-16cf-4ee7-bb4b-0a82113a1a48}",
+    "type": "Box",
+    "visible": false,
+    "name": "sit-box",
+    "locked": false,
+    "userData": "{\"canClickOnModelToSit\":true}",
+    "dimensions": {
+        "x": 0.28872573375701904,
+        "y": 0.04164140298962593,
+        "z": 0.28872573375701904
+    },
+    "grab": {
+        "grabbable": false,
+        "equippableLeftRotation": {
+            "x": -0.0000152587890625,
+            "y": -0.0000152587890625,
+            "z": -0.0000152587890625,
+            "w": 1
+        },
+        "equippableRightRotation": {
+            "x": -0.0000152587890625,
+            "y": -0.0000152587890625,
+            "z": -0.0000152587890625,
+            "w": 1
+        }
+    },
+    "script": "http://metaverse.bashora.com/scripts/sit/sitClient.js",
+    "scriptTimestamp": 1611459854336,
+    "serverScripts": "http://metaverse.bashora.com/scripts/sit/sitServer.js",
+    "color": {
+        "red": 0,
+        "green": 180,
+        "blue": 239
+    },
+    "shape": "Cube"
+}
+    ],
+  "Id": "{80dc22f2-7db4-4899-ad49-641d4dba3563}",
+  "Version": 133
+}
