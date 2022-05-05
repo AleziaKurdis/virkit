@@ -62,7 +62,7 @@
             if (event.isPrimaryButton && 
                 Vec3.distance(MyAvatar.position, Entities.getEntityProperties(_this.entityID, ["position"]).position) <= MAX_CLICKABLE_DISTANCE_M) {
                 
-                print("CLICKED!");
+                print("CLICKED! " + panelUrl);
                 if (panelID === Uuid.NULL) {
                     panelID = Entities.addEntity({
                         "parentID": thisEntityID,
