@@ -15,11 +15,9 @@
     var ROOT = Script.resolvePath('').split(jsMainFileName)[0];
 
     var MAX_CLICKABLE_DISTANCE_M = 10;
-    var appScriptUrl = ROOT + "app-ready-player-me.js";
     
     var panelID = Uuid.NULL;
 
-    
     var NBRSEC_DISPLAYED = 8; //8 sec.
 
     this.preload = function(entityID) {
@@ -64,7 +62,6 @@
                 var properties = Entities.getEntityProperties(entityID, ["userData", "dimensions"]);
                 var panelUrl = properties.userData;
                 
-                print("CLICKED! " + panelUrl);
                 if (panelID === Uuid.NULL) {
                     panelID = Entities.addEntity({
                         "parentID": entityID,
