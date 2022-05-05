@@ -26,7 +26,7 @@
     this.preload = function(entityID) {
         thisEntityID = entityID;
         var properties = Entities.getEntityProperties(entityID, ["userData"]);
-        panelUrl = properties.userData;
+        panelUrl = JSON.stringify(properties.userData);
     }
 
 
