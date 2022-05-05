@@ -31,9 +31,9 @@
 
 
     this.leaveEntity = function(entityID) {
-        //do nothing.
         if (panelID !== Uuid.NULL) {
             Entities.deleteEntity(panelID);
+            panelID = Uuid.NULL;
         }
     };
 
@@ -86,9 +86,12 @@
                         "emissive": true,
                         "keepAspectRatio": false,
                     },"local");
-                    print(panelID);
-                    Script.setInterval(function () {
-                        print("DELETE");
+
+                    Script.setTimeout(function () {
+                        if (panelID !== Uuid.NULL) {
+                            Entities.deleteEntity(panelID);
+                            panelID = Uuid.NULL;
+                        }
                     }, NBRSEC_DISPLAYED * 1000);
 
                 }
