@@ -16,6 +16,24 @@
 
     var MAX_CLICKABLE_DISTANCE_M = 10;
     var appScriptUrl = ROOT + "app-ready-player-me.js";
+    
+    var panelUrl;
+    var panelID = Uuid.NULL;
+    var thisEntityID;
+
+    this.preload = function(entityID) {
+        thisEntityID = entityID;
+        var properties = Entities.getEntityProperties(entityID, ["userData"]);
+        panelUrl = properties.userData;
+    }
+
+
+    this.leaveEntity = function(entityID) {
+        //do nothing.
+        if (panelID !== Uuid.NULL) {
+            Entities.deleteEntity(panelID);
+        }
+    };
 
     // Constructor
     var _this = null;
@@ -24,7 +42,6 @@
         _this = this;
         this.entityID = null;
     }
-
 
     // Entity methods
     clickableUI.prototype = {
@@ -44,6 +61,33 @@
                 Vec3.distance(MyAvatar.position, Entities.getEntityProperties(_this.entityID, ["position"]).position) <= MAX_CLICKABLE_DISTANCE_M) {
                 
                 print("CLICKED!");
+                if (panelID === Uuid.NULL) {
+                    panelID = Entities.addEntity({
+                        "parentID": thisEntityID,
+                        "localPosition": {
+                            "x": 0,
+                            "y": 0.6,
+                            "z": 0
+                        },
+                        "type": "Image",
+                        "name": "Info",
+                        "dimensions": {
+                            "x": 1,
+                            "y": 1,
+                            "z": 0.009999999776482582
+                        },
+                        "billboardMode": "yaw",
+                        "grab": {
+                            "grabbable": false
+                        },
+                        "collisionless": true,
+                        "ignoreForCollisions": true,
+                        "imageURL": panelUrl,
+                        "emissive": true,
+                        "keepAspectRatio": false,
+                    },"local");
+                }
+                
             }
         },
 
