@@ -61,7 +61,7 @@
             if (event.isPrimaryButton && 
                 Vec3.distance(MyAvatar.position, Entities.getEntityProperties(_this.entityID, ["position"]).position) <= MAX_CLICKABLE_DISTANCE_M) {
                 
-                var properties = Entities.getEntityProperties(entityID, ["userData"]);
+                var properties = Entities.getEntityProperties(entityID, ["userData", "dimensions"]);
                 var panelUrl = properties.userData;
                 
                 print("CLICKED! " + panelUrl);
@@ -69,8 +69,8 @@
                     panelID = Entities.addEntity({
                         "parentID": entityID,
                         "localPosition": {
-                            "x": 0,
-                            "y": 0.6,
+                            "x": properties.dimensions.x + 0.2,
+                            "y": 0,
                             "z": 0
                         },
                         "type": "Image",
@@ -80,7 +80,6 @@
                             "y": 1,
                             "z": 0.009999999776482582
                         },
-                        "billboardMode": "yaw",
                         "grab": {
                             "grabbable": false
                         },
