@@ -20,6 +20,8 @@
     var panelUrl;
     var panelID = Uuid.NULL;
     var thisEntityID;
+    
+    var NBRSEC_DISPLAYED = 8; //8 sec.
 
     this.preload = function(entityID) {
         thisEntityID = entityID;
@@ -80,13 +82,15 @@
                         "grab": {
                             "grabbable": false
                         },
-                        "collisionless": true,
-                        "ignoreForCollisions": true,
                         "imageURL": panelUrl,
                         "emissive": true,
                         "keepAspectRatio": false,
                     },"local");
                     print(panelID);
+                    Script.setInterval(function () {
+                        print("DELETE");
+                    }, NBRSEC_DISPLAYED * 1000);
+
                 }
                 
             }
