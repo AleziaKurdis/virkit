@@ -86,6 +86,7 @@
                         "emissive": true,
                         "keepAspectRatio": false,
                     },"local");
+                    print(panelID);
                 }
                 
             }
