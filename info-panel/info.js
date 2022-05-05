@@ -69,9 +69,9 @@
                     panelID = Entities.addEntity({
                         "parentID": entityID,
                         "localPosition": {
-                            "x": properties.dimensions.x + 0.2,
+                            "x": 0,
                             "y": 0,
-                            "z": 0
+                            "z": properties.dimensions.z + 0.2
                         },
                         "type": "Image",
                         "name": "Info",
