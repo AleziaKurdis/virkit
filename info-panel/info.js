@@ -17,9 +17,8 @@
     var MAX_CLICKABLE_DISTANCE_M = 10;
     var appScriptUrl = ROOT + "app-ready-player-me.js";
     
-    var panelUrl;
     var panelID = Uuid.NULL;
-    var thisEntityID;
+
     
     var NBRSEC_DISPLAYED = 8; //8 sec.
 
@@ -62,10 +61,13 @@
             if (event.isPrimaryButton && 
                 Vec3.distance(MyAvatar.position, Entities.getEntityProperties(_this.entityID, ["position"]).position) <= MAX_CLICKABLE_DISTANCE_M) {
                 
+                var properties = Entities.getEntityProperties(entityID, ["userData"]);
+                var panelUrl = properties.userData;
+                
                 print("CLICKED! " + panelUrl);
                 if (panelID === Uuid.NULL) {
                     panelID = Entities.addEntity({
-                        "parentID": thisEntityID,
+                        "parentID": entityID,
                         "localPosition": {
                             "x": 0,
                             "y": 0.6,
