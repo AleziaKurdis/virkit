@@ -118,7 +118,7 @@
             "url": "https://aleziakurdis.github.io/virkit/infiniteWhite/infiniteWhite.jpg"
          },
          "haze":{
-            "hazeRange":400,
+            "hazeRange":1000,
             "hazeColor":{
                "red":255,
                "green":255,
