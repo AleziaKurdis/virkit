@@ -106,7 +106,7 @@
             "shadowBias":0.029999999329448
          },
         "ambientLight": {
-            "ambientIntensity": 0.2,
+            "ambientIntensity": 0.4,
             "ambientURL": "https://aleziakurdis.github.io/virkit/infiniteWhite/ambient.jpg"
         },         
          "skybox":{
