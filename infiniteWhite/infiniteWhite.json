@@ -96,11 +96,11 @@
          "angularDamping":0,
          "shapeType":"sphere",
          "keyLight":{
-            "intensity":3,
+            "intensity":4,
             "direction":{
-               "x":0,
-               "y":-0.70710676908493,
-               "z":0.70710676908493
+                "x": 0,
+                "y": -0.2570805549621582,
+                "z": 0.9663899540901184
             },
             "castShadows":true,
             "shadowBias":0.029999999329448
