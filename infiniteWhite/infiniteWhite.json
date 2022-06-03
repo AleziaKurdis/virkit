@@ -99,14 +99,14 @@
             "intensity":4,
             "direction":{
                 "x": 0,
-                "y": -0.2570805549621582,
-                "z": 0.9663899540901184
+                "y": -0.49688011407852173,
+                "z": 0.8678191900253296
             },
             "castShadows":true,
             "shadowBias":0.029999999329448
          },
         "ambientLight": {
-            "ambientIntensity": 2.0,
+            "ambientIntensity": 1.8,
             "ambientURL": "https://aleziakurdis.github.io/virkit/infiniteWhite/ambient.jpg"
         },         
          "skybox":{
