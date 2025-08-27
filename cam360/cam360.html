@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--
+    cam360.html
+
+    Created by Alezia Kurdis, August 27th 2022.
+    Copyright 2022-2025, Overte e.V.
+
+    UI for an application to take 360 degrees photo by throwing a camera in the air.
+
+    Distributed under the Apache License, Version 2.0.
+    See the accompanying file LICENSE or http://www.apache.org/licenses/LICENSE-2.0.html
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="cam360.css">
+        <script src="cam360Html.js"></script>
+    </head>
+    <body id="body" class="throwMode">
+        <div id="topContainer">
+            <table style = "width: 95%; border-collapse: collapse;">
+                <tr>
+                    <td style = "width: 40%;">
+                        <h1>CAM360 v2.1</h1>
+                    </td>
+                    <td style = "width: 60%; text-align: right;">
+                        <div id="processing"></div>
+                    </td>
+                </tr>
+            </table><br><br>
+            <div style="width: 96%; text-align: center; padding: 0;">
+                <div class="overborder"><button id="modeThrow" class="modeBtnOn" onClick='setMode("throw");'>THROW MODE</button></div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="overborder"><button id="modePosition" class="modeBtnOff" onClick='setMode("position");'>POSITION MODE</button></div>
+            </div>
+        </div>
+        <table style = "width: 96%; border-collapse: collapse;">
+            <tr style="vertical-align: top;">
+                <td style = "width: 25%; text-align: center;">
+                    <br><br>
+                    <img id = "cameraIndicator" src="resources/images/off.png"><br>
+                    <button id="cameraOnOff" class="cameraOnOffthrowMode" onClick='activateRpo360();'>OFF</button>
+                </td>
+                <td style = "width: 60%; text-align: center;">
+                    <div id="throwModeControls">
+                        <br><br>
+                        <div id="noticeThrow">Grab then throw the camera in the air<br>to take a 360&deg; snapshot.</div><br>
+                        <fieldset id="postShotContainer">
+                            <legend>Post-shot behavior:</legend>
+                            <label>
+                                <input type="radio" name="postShotBehavior" value="TURNOFF" onChange="setPostBehavior('TURNOFF');">
+                                Turn off the camera after its shot.
+                            </label><br>
+                            <label>
+                                <input type="radio" name="postShotBehavior" value="HOME" onChange="setPostBehavior('HOME');">
+                                Return the camera directly in front of you.
+                            </label><br>
+                            <label>
+                                <input type="radio" name="postShotBehavior" value="LEAVE" onChange="setPostBehavior('LEAVE');">
+                                Let it fall and get grabbed again.
+                            </label>
+                         </fieldset>
+                    </div>
+                    <div id="positionModeControls">
+                        <div id="subPositionContainer">
+                            <br><br>
+                            <button id="capture" onClick="capture();">CAPTURE</button>
+                            <br><br><br>
+                            <i>You can also click on the thumbstick<br>on your left controller.</i>
+                        </div>
+                    </div>
+                </td>
+                </td>
+                <td style = "width: 15%; text-align: right;">
+                    <br><br>
+                    <button id="flashOnOff" onClick='toggleFlash();'><img src='resources/images/flashOff.jpg'></button>
+                </td>
+                
+            </tr>
+        </table>
+        <div id="viewerContainer">
+            <table style = "width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style = "width: 100%; text-align: center;">
+                        <br><br><br>
+                        <button class="navViewer" onClick='showPreviousCapture();'>&#9668;</button>
+                        <button id="showLastCapture" onClick='showLastCapture();'>View Last 360&deg; Capture</button>
+                        <button class="navViewer" onClick='showNextCapture();'>&#9658;</button>
+                        <br><br>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr style="vertical-align: top;">
+                                <td style = "width: 40%; text-align: right;">Viewer transparency:</td>
+                                <td style = "width: 60%; text-align: left;">
+                                    <input type="range" id="alpha" min="1" max="100" onChange="setAlpha();"><br>
+                                    <img src="resources/images/opacityScale.png">
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                        <br>
+                        <div id="hideVRnotice">&nbsp;</div>
+                    </td>
+                </tr>
+            </table>
+            <br><br><br>
+            <div id="settingContainer">
+                <br>
+                <button id="folderSetting" class="folderSetting" onClick='openSetting();'>SETTINGS &#128447;</button>
+                <br><br>
+            </div>
+            <div id="uninstallContainer">
+                <button id="uninstall" onClick = "uninstall();">Uninstall this app</button>
+            </div>
+        </div>
+    </body>
+</html>
