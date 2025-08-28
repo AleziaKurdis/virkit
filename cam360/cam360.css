@@ -212,6 +212,10 @@ h1 {
     background-color: #666666;
 }
 
+#capture:disabled {
+    color: #777777;
+}
+
 #showLastCapture {
     color: #ffffff;
     background-color: #444444;

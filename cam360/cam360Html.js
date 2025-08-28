@@ -146,13 +146,13 @@ function renderCameraStatus() {
         document.getElementById("cameraIndicator").src = "resources/images/on.png";
         document.getElementById("cameraOnOff").innerHTML = "STOP<br>CAMERA";
         if (!isThrowMode) {
-            document.getElementById("capture").disabled = true;
+            document.getElementById("capture").disabled = false;
         }
     } else {
         document.getElementById("cameraIndicator").src = "resources/images/off.png";
         document.getElementById("cameraOnOff").innerHTML = "START<br>CAMERA";
         if (!isThrowMode) {
-            document.getElementById("capture").disabled = false;
+            document.getElementById("capture").disabled = true;
         }
     }
 }
