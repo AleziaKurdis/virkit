@@ -339,7 +339,7 @@
     }
     
     function updateSnapshot360HistorySetting(url) {
-        let updatedHistory = [url];
+        let updatedHistory = ["file:///" + url];
         for (let i = 0; i < HISTORY_LENGTH - 1; i++ ) {
             if (i >= last360ThumbnailURL.length) {
                 break;
@@ -563,7 +563,7 @@
                         "metallic": 0.01,
                         "roughness": 0.5,
                         "opacity": visualizerAlpha,
-                        "cullFaceMode": "CULL_FRONT"
+                        "cullFaceMode": "CULL_BACK"
                     }
                 })
                 
@@ -599,7 +599,7 @@
                         "metallic": 0.01,
                         "roughness": 0.5,
                         "opacity": visualizerAlpha,
-                        "cullFaceMode": "CULL_FRONT"
+                        "cullFaceMode": "CULL_BACK"
                     }
                 })
             });

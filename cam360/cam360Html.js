@@ -221,11 +221,11 @@ function showNextCapture() {
 }
 
 function uninstall() {
-    var message = {
+    var messageToSend = {
         "channel": channel,
-        "action": "SELF_UNINSTALL"
+        "method": "SELF_UNINSTALL"
     };
-    EventBridge.emitWebEvent(JSON.stringify(message));
+    EventBridge.emitWebEvent(JSON.stringify(messageToSend));
 }
 
 EventBridge.emitWebEvent(JSON.stringify({
