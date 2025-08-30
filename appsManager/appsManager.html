@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!--
+    appsManager.html
+
+    Created by Alezia Kurdis, August 28th 2025.
+    Copyright 2025 Overte e.V.
+
+    UI for an Applications Manager (prototype).
+
+    Distributed under the Apache License, Version 2.0.
+    See the accompanying file LICENSE or http://www.apache.org/licenses/LICENSE-2.0.html
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            @font-face {
+                font-family: FiraSans-SemiBold;
+                src: url(fonts/FiraSans-SemiBold.ttf);
+            }
+
+            @font-face {
+                font-family: FiraSans-Regular;
+                src: url(fonts/FiraSans-Regular.ttf);
+            }
+            
+            @font-face {
+                font-family: hifi-glyphs;
+                src: url(fonts/hifi-glyphs.ttf);
+            }
+            
+            html {
+                width: 100%;
+                height: 100%;
+            }
+
+            body {
+                background-color: #444444;
+                font-family: FiraSans-Regular;
+                font-size: 12px;
+                color: #FFFFFF;
+                text-decoration: none;
+                font-style: normal;
+                font-variant: normal;
+                text-transform: none;
+            }
+            
+            #uninstall {
+                font-family: FiraSans-SemiBold;
+                background-color: #222222;
+                font-size: 9px;
+                color: #cccccc;
+                border-radius: 3px;
+                border: none;
+                transition-duration: 0.2s;
+                width: 100px;
+                padding: 3px;
+                margin-top: 3px;
+            }
+
+            #uninstall:hover {
+                background-color: #000000;
+                color: #ffffff;
+            }
+
+            #uninstall:focus {
+                outline: none;
+            }
+            
+            td.appslist {
+                width: 72%;
+                font-family: FiraSans-SemiBold;
+                background-color: #222222;
+                font-size: 15px;
+                color: #EEEEEE;
+                border: 1px solid #777777;
+            }
+
+            td.actions {
+                width: 28%;
+                background-color: #222222;
+                border: 1px solid #777777;
+            }
+            
+            #running {
+                background-color: #333333;
+                width: 100%;
+                height: 370px;
+                border: 1px solid #000000;
+                padding: 1px;
+            }
+            #failed {
+                background-color: #333333;
+                width: 100%;
+                height: 150px;
+                padding: 1px;
+                border: 1px solid #000000;
+            }
+            font.url {
+                font-size: 10px;
+                font-style: italic;
+                color: #999999;
+            }
+            h2 {
+                font-size: 15px;
+            }
+            
+            button.actionsWhite {
+                width: 30px;
+                height: 30px;
+                padding: 0;
+                border-size: 1px;
+                background-color: #222222;
+                font-family: hifi-glyphs;
+                font-size: 18px;
+                color: #dddddd;
+                border-radius: 8px;
+                border-style: outset;
+                box-shadow: 1px 1px 3px #000000;
+                margin: 2px;
+            }
+            
+            button.actionsWhite:hover {
+                background-color: #444444;
+                color: #ffffff;
+            }
+            
+            button.actionsGrey {
+                width: 30px;
+                height: 30px;
+                padding: 0;
+                border-size: 1px;
+                background-color: #222222;
+                font-family: hifi-glyphs;
+                font-size: 18px;
+                color: #666666;
+                border-radius: 8px;
+                border-style: outset;
+                box-shadow: 1px 1px 3px #000000;
+                margin: 2px;
+            }
+            
+            button.actionsGrey:hover {
+                background-color: #444444;
+                color: #aaaaaa;
+            }
+            
+            button.actionsRed {
+                width: 30px;
+                height: 30px;
+                padding: 0;
+                border-size: 1px;
+                background-color: #222222;
+                font-family: hifi-glyphs;
+                font-size: 18px;
+                color: #d64f4f;
+                border-radius: 8px;
+                border-style: outset;
+                box-shadow: 1px 1px 3px #000000;
+                margin: 2px;
+            }
+            
+            button.actionsRed:hover {
+                background-color: #444444;
+                color: #fc5858;
+            }
+            button:focus {
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Application Manager (prototype)</h1>
+        <h2>Running external scripts:</h2>
+        <div id="running"></div>
+        <br>
+        <h2>Awaited but not running:</h2>
+        <div id="failed"></div>
+        <div style="text-align: right; width:100%;">
+            <button id="uninstall" onClick = "uninstall();">Uninstall this app</button>
+        </div>
+        <script>
+            var channel = "overte.application.ak.appsManager";
+            var appsData;
+
+            EventBridge.scriptEventReceived.connect(function (message) {
+                let messageObj;
+                try {
+                    messageObj = JSON.parse(message);
+                } catch (e) {
+                    alert("Invalid JSON from UI:");
+                    return;
+                }
+                if (messageObj.channel === channel && messageObj.action === "GET_DATA") {
+                    appsData = {};
+                    appsData = messageObj.data;
+                    render();
+                }
+            });
+
+            function render() {
+                let appsListContent = "";
+                let failedAppsContent = "";
+                
+                appsListContent += "<table style=' border-collapse: collapse; width: 100%;'>";
+                for (let i = 0; i < appsData.appsList.length; i++) {
+                    appsListContent += "<tr>";
+                    appsListContent += "<td class='appslist'>";
+                    appsListContent += escapeHTML(appsData.appsList[i].name) + "<br>";
+                    appsListContent += "<font class='url'>" + shortenAt(escapeHTML(appsData.appsList[i].url), 64, 20) + "</font>";
+                    appsListContent += "</td>";
+                    appsListContent += "<td class='actions'>";
+                    
+                    if (appsData.appsList[i].isSecured) {
+                        //if we would embedding this in More app, "unsecure" could be set at the "uninstallation".
+                        appsListContent += "<button class='actionsWhite' onClick='unsecureScript(" + escapeStringHTML(appsData.appsList[i].url) + ");'>&#xE006;</button>";
+                        //if we would embedding this in More app, "terminate" could be avalable on the app (if it is a running and unsecured one like listed in a "other running apps" tab).
+                        appsListContent += "<button class='actionsRed' onClick='stopScript(" + escapeStringHTML(appsData.appsList[i].url) + ");'>&#xE01E;</button>";
+                    } else {
+                        //if we would embedding this in More app, "secure" could be set at the "installation".
+                        appsListContent += "<button class='actionsGrey' onClick='secureScript(" + escapeStringHTML(appsData.appsList[i].url) + ");'>&#xE039;</button>";
+                        //if we would embedding this in More app, "stop" could be avalable on the app (if it is a running and unsecured one).
+                        appsListContent += "<button class='actionsRed' onClick='stopScript(" + escapeStringHTML(appsData.appsList[i].url) + ");'>x</button>";
+                    }
+                    //if we would embedding this in More app, "reload" could be avalable on the app (if it is a running (on any tab)).
+                    appsListContent += "<button class='actionsWhite' onClick='reloadScript(" + escapeStringHTML(appsData.appsList[i].url) + ");'>F</button>";
+                    
+
+                    appsListContent += "</td>";
+                    appsListContent += "</tr>";
+                }
+                
+                failedAppsContent += "<table style=' border-collapse: collapse; width: 100%;'>";
+                for (let i = 0; i < appsData.failedApps.length; i++) {
+                    failedAppsContent += "<tr>";
+                    failedAppsContent += "<td class='appslist'>";
+                    failedAppsContent += escapeHTML(appsData.failedApps[i].name) + "<br>";
+                    failedAppsContent += "<font class='url'>" + shortenAt(escapeHTML(appsData.failedApps[i].url), 64, 20) + "</font>";
+                    failedAppsContent += "</td>";
+                    failedAppsContent += "<td class='actions'>";
+                    
+                    //if we would embedding this in More app, "unsecure" could be avalable on the app as  "uninstall" (if it is a not running but secured).
+                    failedAppsContent += "<button class='actionsRed' onClick='unsecureScript(" + escapeStringHTML(appsData.failedApps[i].url) + ");'>&#xE006;</button>"
+                    //if we would embedding this in More app, "reload" could be avalable on the app (is it is a nut running but secured).
+                    failedAppsContent += "<button class='actionsWhite' onClick='loadScript(" + escapeStringHTML(appsData.failedApps[i].url) + ");'>F</button>";
+
+                    failedAppsContent += "</td>";
+                    failedAppsContent += "</tr>";
+                }
+                document.getElementById("running").innerHTML = appsListContent;
+                document.getElementById("failed").innerHTML = failedAppsContent;
+            }
+            
+            function secureScript(url) {
+                EventBridge.emitWebEvent(JSON.stringify({
+                    "channel": channel,
+                    "action": "SECURE",
+                    "url": url
+                }));
+            }
+
+            function unsecureScript(url) {
+                EventBridge.emitWebEvent(JSON.stringify({
+                    "channel": channel,
+                    "action": "UNSECURE",
+                    "url": url
+                }));
+            }
+
+            function stopScript(url) {
+                EventBridge.emitWebEvent(JSON.stringify({
+                    "channel": channel,
+                    "action": "STOP",
+                    "url": url
+                }));
+            }
+
+            function reloadScript(url) {
+                EventBridge.emitWebEvent(JSON.stringify({
+                    "channel": channel,
+                    "action": "RELOAD",
+                    "url": url
+                }));
+            }
+            
+            function loadScript(url) {
+                EventBridge.emitWebEvent(JSON.stringify({
+                    "channel": channel,
+                    "action": "LOAD",
+                    "url": url
+                }));
+            }
+
+            function escapeStringHTML(text) {
+                // JSON.stringify will handle quotes and backslashes correctly so they won't break onclick.
+                // Extra quotes aren't needed, because JSON.stringify includes those.
+                return escapeHTML(JSON.stringify(text));
+            }
+            
+            function escapeHTML(str) {
+                return str
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+            
+            /**
+             * Shorten a string so the output has exactly `length` characters,
+             * replacing the middle part starting at `midPosition` with "..."
+             * while keeping the beginning and the end untouched.
+             *
+             * @param {string} str           The original string
+             * @param {number} length        Desired output length (including "...")
+             * @param {number} midPosition   Index (0-based) where hiding begins
+             * @returns {string}
+             */
+            function shortenAt(str, length, midPosition) {
+                if (str.length <= length) return str; // No need to shorten
+
+                const ellipsis = "&#8230; &#8230;";
+                const keep = length - 3;
+
+                // Ensure midPosition is valid
+                midPosition = Math.max(0, Math.min(midPosition, str.length));
+
+                // How many chars to keep before the ellipsis
+                const startPart = str.slice(0, midPosition);
+                // How many chars left for the end
+                const endLen = keep - startPart.length;
+                const endPart = endLen > 0 ? str.slice(str.length - endLen) : "";
+
+                return startPart + ellipsis + endPart;
+            }
+
+            function uninstall() { 
+                var messageToSend = {
+                    "channel": channel,
+                    "action": "SELF_UNINSTALL"
+                };
+                EventBridge.emitWebEvent(JSON.stringify(messageToSend));
+            }
+            
+            EventBridge.emitWebEvent(JSON.stringify({
+                "channel": channel,
+                "action": "UI_READY"
+            }));
+        </script>
+    </body>
+</html>
