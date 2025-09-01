@@ -18,7 +18,7 @@
     
     var APP_NAME = "APPSMAN";
     var APP_URL = ROOT + "appsManager.html";
-    var APP_ICON_INACTIVE = ROOT + "appManager_icon_white.png";
+    let APP_ICON_INACTIVE = ROOT + "appManager_icon_white.png";
     var APP_ICON_ACTIVE = ROOT + "appManager_icon_black.png";
     var ICON_CAPTION_COLOR = "#FFFFFF";
 
