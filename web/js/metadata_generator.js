@@ -83,7 +83,7 @@ async function getCommunityAppsMetadata() {
 		return returnIndex;
 	}
 }
-
+/*
 async function getMetadata(url) {
 	let response = await httpRequest(url);
 
@@ -108,6 +108,26 @@ function httpRequest(url) {
 			return resolve(response.text());
 		}
 	})
+}
+*/
+
+async function getMetadata(url) {
+	try {
+		const response = await httpRequest(url);
+		repository = response;
+	} catch (err) {
+		console.error("Failed to get metadata:", err);
+	}
+}
+
+function httpRequest(url) {
+	return fetch(url)
+		.then(response => {
+			if (!response.ok) {
+				throw new Error(`HTTP ${response.status}`);
+			}
+			return response.json();
+		});
 }
 
 function showPageArea(name) {
