@@ -1,3 +1,17 @@
+
+//  metadata_generator.js
+//
+//  Created by Armored Dragon, June 30th, 2025.
+//  Copyright 2025 Overte e.V.
+//
+//  Distributed under the Apache License, Version 2.0.
+//  See the accompanying file LICENSE or http://www.apache.org/licenses/LICENSE-2.0.html
+
+//Paths
+const thisPageName = "metadata_generator.html";
+const currentPath = window.location.protocol + "//" + window.location.host + window.location.pathname;
+const ROOTPATH = currentPath.replace(thisPageName, "");
+
 let repository = {};
 
 let formData = {
@@ -50,21 +64,6 @@ function httpRequest(url) {
 			return response.json();
 		});
 }
-/*
-async function getMetadata(url) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-
-        const data = await response.json();
-        console.log("Loaded object:", data);
-        console.log("Title:", data.title); // access properties
-    } catch (err) {
-        console.error("Error loading JSON:", err);
-    }
-}
-*/
 
 function showPageArea(name) {
 	document.querySelector('#form-v1-app').classList.add('hidden');
