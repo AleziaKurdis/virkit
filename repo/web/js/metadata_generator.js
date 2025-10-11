@@ -66,10 +66,8 @@ function httpRequest(url) {
 }
 
 function showPageArea(name) {
-	document.querySelector('#form-v1-app').classList.add('hidden');
 	document.querySelector('#form-v2-app').classList.add('hidden');
 	document.querySelector('#results').classList.add('hidden');
-	document.querySelector('#form-url').classList.add('hidden');
 
 	document.querySelector(`#${name}`).classList.remove('hidden');
 }
