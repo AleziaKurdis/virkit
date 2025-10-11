@@ -1,5 +1,5 @@
 function continueFromUrl() {
-	formData.url = ROOTPATH + "../applications/metadata.js";
+	formData.url = ROOTPATH + "../applications/metadata.json";
 
 	getMetadata(formData.url);
 
