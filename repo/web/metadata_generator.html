@@ -30,65 +30,12 @@
     </div>
 	<div id="content" class="center-align hidden">
 		<h1>Applications Repository  Metadata Generator</h1>
-<!--
-		<!-- Get JSON from metadata.json or the community-apps >
-		<div id="form-url" class="form-entry">
-			<h2>Enter your repository</h2>
-			<div class="form-area">
-				<input id="repo-url" type="text" value="https://more.overte.org/applications/metadata.json">
-				<div class="button-horizontal-container">
-					<button class="continue-button" onclick="continueFromUrl()">Continue</button>
-				</div>
-			</div>
-		</div>
-
-		<!-- Create application V1 >
-		<div id="form-v1-app" class="form-entry hidden">
-			<h2>Create a legacy application</h2>
-			<div class="form-area">
-				<div class="form-data">
-
-					<div class="form-textinput">
-						<label for="app-v1-name">Name</label>
-						<input id="app-v1-name" type="text" placeholder="Name" oninput="updateMetadataFromHTML('v1')">
-					</div>
-
-					<div class="form-textarea">
-						<label for="app-v1-description">Description</label>
-						<textarea id="app-v1-description" type="text" placeholder="Description"
-							oninput="updateMetadataFromHTML('v1')"></textarea>
-					</div>
-
-					<div class="form-textinput">
-						<label for="app-v1-icon">Icon</label>
-						<input id="app-v1-icon" type="text" placeholder="Icon" oninput="updateMetadataFromHTML('v1')">
-					</div>
-
-					<div class="form-textinput">
-						<label for="app-v1-directory">Directory</label>
-						<input id="app-v1-directory" type="text" placeholder="Directory"
-							oninput="updateMetadataFromHTML('v1')">
-					</div>
-
-					<div class="form-textinput">
-						<label for="app-v1-script">JSfile</label>
-						<input id="app-v1-script" type="text" placeholder="Script file"
-							oninput="updateMetadataFromHTML('v1')">
-					</div>
-
-					<div class="form-textinput">
-						<label for="app-v1-script">Caption</label>
-						<input id="app-v1-caption" type="text" placeholder="Toolbar caption"
-							oninput="updateMetadataFromHTML('v1')">
-					</div>
-
-				</div>
-				<div class="button-horizontal-container">
-					<button class="continue-button" onclick="continueFromV1()">Continue</button>
-				</div>
-			</div>
-		</div>
--->
+<br>
+applications/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┗ <font color = "#00AA00" >myappDirectory</font>/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣ <font color = "#b300ff" >myapp.js</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┗ <font color = "#0055ff" >img/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┗ icon_white.png</font>
 		<!-- Create application V2 -->
 		<div id="form-v2-app" class="form-entry hidden">
 			<h2>Create an application</h2>
@@ -97,41 +44,41 @@
 
 					<div class="form-textinput">
 						<label for="app-v2-name">Name</label>
-						<input id="app-v2-name" type="text" placeholder="Name" oninput="updateMetadataFromHTML('v2')">
+						<input id="app-v2-name" type="text" Title="Name" placeholder="Name" oninput="updateMetadataFromHTML('v2')">
 					</div>
 
 					<div class="form-textarea">
 						<label for="app-v2-description">Description</label>
-						<textarea id="app-v2-description" type="text" placeholder="Description"
+						<textarea id="app-v2-description" type="text" title="Description" placeholder="Description"
 							oninput="updateMetadataFromHTML('v2')"></textarea>
 					</div>
 
 					<div class="form-textinput">
-						<label for="app-v2-directory">Directory</label>
-						<input id="app-v2-directory" type="text" placeholder="Relative directory"
+						<label for="app-v2-directory"><font color = "#00AA00" >Directory</font></label>
+						<input id="app-v2-directory" type="text" title="Your application's directory (under '/applications')" placeholder="Your application's directory (under '/applications')"
 							oninput="updateMetadataFromHTML('v2')">
 					</div>
 
 					<div class="form-textinput">
-						<label for="app-v2-script">Script</label>
-						<input id="app-v2-script" type="text" placeholder="Script file"
+						<label for="app-v2-script"><font color = "#b300ff" >Script</font></label>
+						<input id="app-v2-script" type="text" title="The filename of the .js script (in your application's directory)" placeholder="The filename of the .js script (in your application's directory)"
 							oninput="updateMetadataFromHTML('v2')">
 					</div>
 
 					<div class="form-textinput">
-						<label for="app-v2-icon">Icon</label>
-						<input id="app-v2-icon" type="text" placeholder="Icon" oninput="updateMetadataFromHTML('v2')">
+						<label for="app-v2-icon"><font color = "#0055ff" >Icon</font></label>
+						<input id="app-v2-icon" type="text" title="Relative or Absolute URL of a .svg or .png file. (100 X 100 px)" placeholder="Relative or Absolute URL of a .svg or .png file. (100 X 100 px)" oninput="updateMetadataFromHTML('v2')">
 					</div>
 
 					<div class="form-textinput">
 						<label for="app-v2-author">Author</label>
-						<input id="app-v2-author" type="text" placeholder="Author"
+						<input id="app-v2-author" type="text" title="Author (Person or Organization...)" placeholder="Author (Person or Organization...)"
 							oninput="updateMetadataFromHTML('v2')">
 					</div>
 
 					<div class="form-textinput">
 						<label for="app-v2-homepage">Homepage</label>
-						<input id="app-v2-homepage" type="text" placeholder="Homepage"
+						<input id="app-v2-homepage" type="text" title="Application related web page. (Relative or Absolute URL)" placeholder="Application related web page. (Relative or Absolute URL)"
 							oninput="updateMetadataFromHTML('v2')">
 					</div>
 
