@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+    openVote.html
+
+    Created by Alezia Kurdis, October 20th, 2025.
+    Copyright 2025 Overte e.V.
+
+    Ui for the voting application openVote.
+
+    Distributed under the Apache License, Version 2.0.
+    See the accompanying file LICENSE or http://www.apache.org/licenses/LICENSE-2.0.html
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="openVote.css">
+    </head>
+    <body>
+        <h1>open<font style="color: #8081d1;">Vote</font></h1>
+        <div id="tabsContainer">
+            <button class="tabActive" id="votersTab">Voters</button>
+            <button class="tab" id="pollsTab">Polls</button>
+        </div>
+        <div id="voterList">
+            <div class="loading">
+                <img src="loading.gif" style="width: 100px; height: 100px;"><br>
+                Gathering data...
+            </div>
+        </div>
+        <div id="pollList">
+            <div id="pollListHeader">
+                <button id="addPollBtn">+ New Poll</button>
+            </div>
+            <div id="pollsContainer"></div>
+        </div>
+        <div id="createPoll">
+            <div id="formContainer">
+                <h2>Create a new poll:</h2>
+                <div id="errorMessage">&nbsp;</div>
+                Question:<br>
+                <input type="text" id="question"><br><br>
+                Choices:<br>
+                <input type="text" class="choices" id="choices[]"><br>
+                <input type="text" class="choices" id="choices[]"><br>
+                <input type="text" class="choices" id="choices[]"><br>
+                <input type="text" class="choices" id="choices[]"><br>
+                <input type="text" class="choices" id="choices[]"><br>
+                <input type="text" class="choices" id="choices[]"><br>
+                <input type="text" class="choices" id="choices[]"><br>
+                <input type="text" class="choices" id="choices[]"><br>
+                <input type="text" class="choices" id="choices[]"><br>
+                <input type="text" class="choices" id="choices[]"><br>
+                <input type="text" class="choices" id="choices[]"><br>
+                <input type="text" class="choices" id="choices[]"><br>
+                <br>
+                <input type="checkbox" id="isPreferential" name="isPreferential">
+                <label for="isPreferential"> Multiple Choices voting</label><br>
+                
+                <input type="checkbox" id="allowAnonymous" name="allowAnonymous">
+                <label for="allowAnonymous"> Allow anonymous users to vote</label><br>
+                
+                <input type="checkbox" id="isSecretVote" name="isSecretVote" checked>
+                <label for="isSecretVote"> Secret ballot voting</label><br><br>
+                Vote duration: <input type="number" id="duration" min="1" max="120" step="1" value="10"> minutes.
+                <div id="formButtonContainer">
+                    <button class="base periColor" id="createPollCreateBtn">Create</button>
+                    <button class="base" id="createPollCancelBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div id="votationPanel"></div>
+        <script src="openVote.js"></script>
+    </body>
+</html>

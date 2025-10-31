@@ -1,0 +1,433 @@
+/*
+//   
+//   openVote.css
+//   
+//   Created by Alezia Kurdis, October 20th, 2025.
+//   Copyright 2025 Overte e.V.
+//   
+//   css for openVote html ui.
+//   
+//   Distributed under the Apache License, Version 2.0.
+//   See the accompanying file LICENSE or http://www.apache.org/licenses/LICENSE-2.0.html
+*/
+@font-face {
+    font-family: FiraSans-SemiBold;
+    src: url(fonts/FiraSans-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: FiraSans-Regular;
+    src: url(fonts/FiraSans-Regular.ttf);
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: #222222;
+    font-family: FiraSans-Regular;
+    font-size: 12px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+    overflow-y: hidden;
+    width: 100%;
+}
+
+h1 {
+    font-family: FiraSans-Regular;
+    font-size: 26px;
+    color: #FFFFFF;
+    padding-left: 10px;
+}
+
+h2 {
+    font-family: FiraSans-Regular;
+    font-size: 18px;
+    color: #8081d1;
+    padding: 0;
+}
+
+#addPollBtn {
+    font-family: FiraSans-SemiBold;
+    background-color: #6667AB;
+    font-size: 16px;
+    color: #dddddd;
+    border-radius: 3px;
+    border: 0px inset #000000;
+    transition-duration: 0.2s;
+    width: 100px;
+    padding: 5px;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+
+#addPollBtn:hover {
+    background-color: #8081d1;
+    color: #ffffff;
+}
+
+#addPollBtn:focus {
+    outline: none;
+}
+
+button.tab {
+    border-radius: 9px 9px 0px 0px;
+    border: none;
+    font-weight: 700;
+    color: #666666;
+    font-size: 14px;
+    background: #444444;
+    padding: 5px 15px 5px 15px;
+    text-decoration: none;
+    background-image: linear-gradient(to bottom, #444444, #222222);
+    
+}
+
+button.tabActive {
+    border-radius: 9px 9px 0px 0px;
+    border: none;
+    font-weight: 700;
+    color: #CCCCCC;
+    font-size: 14px;
+    background: #777777;
+    padding: 5px 15px 5px 15px;
+    text-decoration: none;
+    background-image: linear-gradient(to bottom, #777777, #444444);
+}
+
+button.tab:hover {
+    color: #888888;
+}
+
+button.tabActive:hover {
+    color: #EEEEEE;
+}
+*:focus {
+    outline: none;
+}
+
+#voterList {
+    display: block;
+    width: 100%;
+    background: #444444;
+    padding: 0;
+    overflow-y: hidden;
+    overflow-x: auto;
+    height: 610px;
+}
+
+#pollList {
+    display: none;
+    width: 100%;
+    background: #444444;
+    padding: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 610px;
+}
+
+#createPoll {
+    display: none;
+    width: 100%;
+    background: #444444;
+    padding: 0;
+    font-size: 14px;
+    overflow-y: hidden;
+    overflow-y: hidden;
+    height: 610px;
+}
+
+#question {
+    width: 100%;
+    padding: 2px;
+    font-family: FiraSans-SemiBold;
+    font-size: 14px;
+}
+
+#duration {
+    width: 10%;
+    padding: 2px;
+    font-family: FiraSans-SemiBold;
+    font-size: 14px;
+}
+
+#pollListHeader {
+    width: 97%;
+    text-align: right;
+    padding: 5px;
+}
+
+#pollsContainer {
+    width: 97%;
+    height: 550px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+input.choices {
+    width: 60%;
+    padding: 2px;
+    font-family: FiraSans-SemiBold;
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+#formContainer {
+    margin: 5px;
+    width: 95%;
+}
+
+button.base {
+    font-family: FiraSans-SemiBold;
+    background-color: #888888;
+    font-size: 16px;
+    color: #dddddd;
+    border-radius: 3px;
+    border: 0px inset #000000;
+    transition-duration: 0.2s;
+    width: 100px;
+    padding: 5px;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    margin-left: 10px;
+}
+
+button.base:hover {
+    background-color: #AAAAAA;
+    color: #ffffff;
+}
+
+button.base:focus {
+    outline: none;
+}
+
+button.periColor {
+    background-color: #6667AB;
+}
+
+button.periColor:hover {
+    background-color: #8081d1;
+}
+
+button.announce {
+    background-color: #ad7f00;
+}
+
+button.announce:hover {
+    background-color: #cfa73a;
+}
+
+button.open {
+    background-color: #00ad48;
+}
+
+button.open:hover {
+    background-color: #3acf78;
+}
+
+button.close {
+    background-color: #ad0000;
+}
+
+button.close:hover {
+    background-color: #cf3a3a;
+}
+
+button.voting {
+    background-color: #006ead;
+}
+
+button.voting:hover {
+    background-color: #3a98cf;
+}
+
+#formButtonContainer {
+    width: 100%;
+    text-align: right;
+}
+
+div.voterEntryContainer {
+    width: 95%;
+    padding: 5px;
+    background-color: #333333;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    border-radius: 6px;
+}
+
+span.voterEntryMarker {
+    font-size: 18px;
+    color: #8081d1;
+}
+
+span.voterEntryName {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+span.voterEntryDetails {
+    font-size: 12px;
+    color: #CCCCCC;
+    font-style: italic;
+}
+
+#errorMessage {
+    width: 95%;
+    padding-left: 5px;
+    color: #ffa32b;
+    font-size: 14px;
+}
+
+div.pollEntryContainer {
+    width: 95%;
+    padding: 5px;
+    background-color: #333333;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    border-radius: 6px;
+}
+
+div.DRAFT {
+    background-color: #183947;
+}
+div.PENDING {
+    background-color: #473918;
+}
+div.OPEN {
+    background-color: #18471b;
+}
+div.CLOSED {
+    background-color: #471818;
+}
+div.DELETED {
+    background-color: #333333;
+}
+
+#actionsContainer {
+    width: 97%;
+    text-align: right;
+}
+
+hr {
+      border: none;
+      height: 2px;
+      background-color: rgba(255,255,255,0.3);
+}
+
+span.pollsQuestion {
+    font-size: 16px;
+}
+
+span.pollsState {
+    color: rgba(255,255,255,0.5);
+}
+
+td.tdPollState {
+    width: 20%;
+    text-align: center;
+}
+
+span.DRAFT {
+    color: #53cafc;
+}
+span.PENDING {
+    color: #fcca54;
+}
+span.OPEN {
+    color: #54fc5f;
+}
+span.CLOSED {
+    color: #fc5454;
+}
+span.DELETED {
+    color: #c9c9c9;
+}
+div.pollsRemainingTime {
+    width: 97%;
+    text-align: center;
+    font-size: 16px;
+}
+
+#votationPanel {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  padding: 20px;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  background-color: #444444;
+  font-size: 18px;
+  overflow: hidden;
+  transition: 0.5s;
+  transform: translateX(-100%);
+}
+
+div.centeredButton {
+    width: 97%;
+    text-align: center;
+}
+
+span.pollsChoices {
+    font-size: 14px;
+}
+
+span.inPanel {
+    font-size: 22px;
+    color: #6ed3ff;
+}
+
+span.highlighted {
+    color: #ffff00;
+}
+
+span.highlightedGreen {
+    color: #70e2ff;
+}
+
+span.resultDetails {
+    font-size: 12px;
+}
+
+a.toggleVoterslist:link {
+    color: #bf4545;
+    font-size: 10px;
+    font-style: none;
+    text-decoration: none;
+}
+
+a.toggleVoterslist:visited {
+    color: #bf4545;
+    font-size: 10px;
+    font-style: none;
+    text-decoration: none;
+}
+a.toggleVoterslist:hover {
+    color: #ffa6a6;
+    font-size: 10px;
+    font-style: none;
+    text-decoration: none;
+}
+a.toggleVoterslist:active {
+    color: #bf4545;
+    font-size: 10px;
+    font-style: none;
+    text-decoration: none;
+}
+
+div.loading {
+    width: 97%;
+    font-size: 18px;
+    color: #8081d1;
+    text-align: center;
+}
